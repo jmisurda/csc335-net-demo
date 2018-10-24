@@ -16,11 +16,13 @@ public class DemoServer {
 				ObjectInputStream(connection.getInputStream());
 		    // Do some IO. 
 			
-			DemoMessage msg = (DemoMessage)input.readObject();
 			
-			while(!msg.getMessage().equals("quit")) {
+			DemoMessage msg ;
+			
+			do {
+				msg = (DemoMessage)input.readObject();
 				System.out.println(msg);
-			}
+			} while(!msg.getMessage().equals("quit"));
 			
 			
 			connection.close();
